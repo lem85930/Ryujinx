@@ -14,14 +14,14 @@
     <DockPanel HorizontalAlignment="Stretch">
         <Image
             Name="RyuLogo"
-            Margin="7,0"
+            Margin="7, 0"
             Height="25"
             Width="25"
             ToolTip.Tip="{Binding Title}"
-            Source="resm:Ryujinx.UI.Common.Resources.Logo_Ryujinx.png?assembly=Ryujinx.UI.Common" />
+            Source="resm:Ryujinx.UI.Common.Resources.Logo_Thiccjinx.png?assembly=Ryujinx.UI.Common" />
         <Menu
             Name="Menu"
-            Height="35"
+            Height="32"
             Margin="0"
             HorizontalAlignment="Left"
             IsOpen="{Binding IsSubMenuOpen, Mode=OneWayToSource}">
@@ -58,7 +58,7 @@
                 <MenuItem Header="{ext:Locale MenuBarFileOpenApplet}" IsEnabled="{Binding IsAppletMenuActive}" Icon="{ext:Icon mdi-launch}">
                     <MenuItem
                         Click="OpenMiiApplet"
-                        Header="Mii Edit Applet"
+                        Header="{ext:Locale MenuBarFileOpenAppletOpenMiiApplet}"
                         Icon="{ext:Icon fa-solid fa-person}"
                         ToolTip.Tip="{ext:Locale MenuBarFileOpenAppletOpenMiiAppletToolTip}" />
                 </MenuItem>
@@ -260,6 +260,10 @@
                     IsEnabled="{Binding IsGameRunning}" />
             </MenuItem>
             <MenuItem VerticalAlignment="Center" Header="{ext:Locale MenuBarTools}">
+                <MenuItem Header="{ext:Locale MenuBarToolsInstallKeys}" Icon="{ext:Icon fa-solid fa-key}" IsEnabled="{Binding EnableNonGameRunningControls}">
+                    <MenuItem Command="{Binding InstallKeysFromFile}" Header="{ext:Locale MenuBarFileToolsInstallKeysFromFile}" Icon="{ext:Icon mdi-file-cog}" />
+                    <MenuItem Command="{Binding InstallKeysFromFolder}" Header="{ext:Locale MenuBarFileToolsInstallKeysFromFolder}" Icon="{ext:Icon mdi-folder-cog}" />
+                </MenuItem>
                 <MenuItem Header="{ext:Locale MenuBarToolsInstallFirmware}" Icon="{ext:Icon fa-solid fa-download}" IsEnabled="{Binding EnableNonGameRunningControls}">
                     <MenuItem Command="{Binding InstallFirmwareFromFile}" Header="{ext:Locale MenuBarFileToolsInstallFirmwareFromFile}" Icon="{ext:Icon mdi-file-cog}" />
                     <MenuItem Command="{Binding InstallFirmwareFromFolder}" Header="{ext:Locale MenuBarFileToolsInstallFirmwareFromDirectory}" Icon="{ext:Icon mdi-folder-cog}" />
@@ -285,6 +289,25 @@
                     Header="{ext:Locale MenuBarHelpCheckForUpdates}"
                     Icon="{ext:Icon mdi-update}"
                     ToolTip.Tip="{ext:Locale CheckUpdatesTooltip}" />
+                <Separator />
+                <MenuItem
+                    Click="MenuItem_OnClick"
+                    Header="{ext:Locale MenuBarHelpFaq}"
+                    Icon="{ext:Icon fa-github}"
+                    Tag="https://github.com/GreemDev/Ryujinx/wiki/FAQ-and-Troubleshooting"
+                    ToolTip.Tip="{ext:Locale MenuBarHelpFaqTooltip}" />
+                <MenuItem
+                    Click="MenuItem_OnClick"
+                    Header="{ext:Locale MenuBarHelpSetup}"
+                    Icon="{ext:Icon fa-github}"
+                    Tag="https://github.com/GreemDev/Ryujinx/wiki/Ryujinx-Setup-&amp;-Configuration-Guide"
+                    ToolTip.Tip="{ext:Locale MenuBarHelpSetupTooltip}" />
+                <MenuItem
+                    Click="MenuItem_OnClick"
+                    Header="{ext:Locale MenuBarHelpMultiplayer}"
+                    Icon="{ext:Icon fa-github}"
+                    Tag="https://github.com/GreemDev/Ryujinx/wiki/Multiplayer%E2%80%90(LDN%E2%80%90Local%E2%80%90Wireless)%E2%80%90Guide"
+                    ToolTip.Tip="{ext:Locale MenuBarHelpMultiplayerTooltip}" />
                 <Separator />
                 <MenuItem
                     Click="OpenAboutWindow"
